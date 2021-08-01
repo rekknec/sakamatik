@@ -13,6 +13,14 @@ client.once('ready', () => {
 })
 
 client.on('message', message =>{
+
+  if(message.content.match('<:agladim:859509083790508112>')){
+      message.react('🪣')
+      message.react('🧻')
+      message.react('🫂')
+  }
+
+
     if(!message.content.startsWith(prefix) || message.author.bot) return
 
     const args = message.content.slice(prefix.length).split(" ")
@@ -25,7 +33,9 @@ client.on('message', message =>{
         let j = getRandomInt((tepkilist.length))
         message.channel.send(tepkilist[j])
     }
+
 })
+
 
 client.login(process.env.BOT_TOKEN);
 
