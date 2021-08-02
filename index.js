@@ -1,5 +1,6 @@
 const sakalist = require('./saka');
 const tepkilist = require('./tepki');
+const whitelist = require('./whitelist');
 require('dotenv').config()
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -13,9 +14,7 @@ client.once('ready', () => {
 })
 
 client.on('message', message =>{
-
-    if (message.channel.id === '801574042129006605' || message.channel.id === "797859848997437461" || message.channel.id === "871163143215255595"){
-
+    if (whitelist.find(id => id == message.channel.id)){
         if(!message.content.startsWith(prefix) || message.author.bot) return
 
         const args = message.content.slice(prefix.length).split(" ")
