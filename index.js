@@ -14,6 +14,11 @@ client.once('ready', () => {
 })
 
 client.on('message', message =>{
+    if(message.content.match('<:agladim:859509083790508112>')){
+        message.react('🪣')
+        message.react('🧻')
+        message.react('🫂')
+    }
     if (whitelist.find(id => id == message.channel.id)){
         if(!message.content.startsWith(prefix) || message.author.bot) return
 
@@ -27,11 +32,6 @@ client.on('message', message =>{
             let j = getRandomInt((tepkilist.length))
             message.channel.send(tepkilist[j])
         }
-    }
-    if(message.content.match('<:agladim:859509083790508112>')){
-        message.react('🪣')
-        message.react('🧻')
-        message.react('🫂')
     }
 })
 
