@@ -15,12 +15,6 @@ client.once('ready', () => {
 client.on('message', message =>{
 
     if (message.channel.id === '801574042129006605' || message.channel.id === "797859848997437461" || message.channel.id === "871163143215255595"){
-        if(message.content.match('<:agladim:859509083790508112>')){
-            message.react('🪣')
-            message.react('🧻')
-            message.react('🫂')
-        }
-
 
         if(!message.content.startsWith(prefix) || message.author.bot) return
 
@@ -35,7 +29,11 @@ client.on('message', message =>{
             message.channel.send(tepkilist[j])
         }
     }
-
+    if(message.content.match('<:agladim:859509083790508112>')){
+        message.react('🪣')
+        message.react('🧻')
+        message.react('🫂')
+    }
 })
 
 
