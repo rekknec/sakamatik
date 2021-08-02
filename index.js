@@ -14,24 +14,26 @@ client.once('ready', () => {
 
 client.on('message', message =>{
 
-  if(message.content.match('<:agladim:859509083790508112>')){
-      message.react('🪣')
-      message.react('🧻')
-      message.react('🫂')
-  }
+    if (message.channel.id === '801574042129006605' || message.channel.id === "797859848997437461" || message.channel.id === "871163143215255595"){
+        if(message.content.match('<:agladim:859509083790508112>')){
+            message.react('🪣')
+            message.react('🧻')
+            message.react('🫂')
+        }
 
 
-    if(!message.content.startsWith(prefix) || message.author.bot) return
+        if(!message.content.startsWith(prefix) || message.author.bot) return
 
-    const args = message.content.slice(prefix.length).split(" ")
-    const command = args.shift().toLowerCase()
+        const args = message.content.slice(prefix.length).split(" ")
+        const command = args.shift().toLowerCase()
 
-    if(command === 'saka'){
-        let i = getRandomInt(sakalist.length)
-        message.channel.send(sakalist[i])
-    }else if(command === 'tepki'){
-        let j = getRandomInt((tepkilist.length))
-        message.channel.send(tepkilist[j])
+        if(command === 'saka'){
+            let i = getRandomInt(sakalist.length)
+            message.channel.send(sakalist[i])
+        }else if(command === 'tepki'){
+            let j = getRandomInt((tepkilist.length))
+            message.channel.send(tepkilist[j])
+        }
     }
 
 })

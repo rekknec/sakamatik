@@ -3,6 +3,7 @@ const sakalist = ["demiş ki ben o palyaçoyum",
     "2 lira at şaka yapayım",
     "kalkmaya meyilli",
     "beklenenden daha küçük",
+    "31",
     "serin mal",
     "mal geldi",
     "banlarım he"]
