@@ -36,6 +36,9 @@ client.on('message', message =>{
         message.react('🫂')
     }else if(message.content.match('🤮')){
         message.react('🪣')
+    }else if(message.content.match(/yat[iı][şs]/)){
+        message.react('<:yatis:779723209322921995>')
+        console.log('girdi')
     }
     if (whitelist.find(id => id == message.channel.id)){
         if(!message.content.startsWith(prefix) || message.author.bot) return
