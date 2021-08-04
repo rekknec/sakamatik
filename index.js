@@ -71,6 +71,9 @@ client.on('message', message =>{
                     .addField ('s!saka', 'bu komut, size komik olmayan birtakım şakalar yapar')
                     .addField ('s!tepki', 'bu komut, bu komik olmayan şakalara vermeniz gereken tepkiyi söyler')
                     .addField ('s!hakaret', 'bu da adı üstünde')
+                    .addField ('s!sakalist', `bütün şakaları dm'den yollar`)
+                    .addField ('s!hakaretlist', `bütün hakaretleri dm'den yollar`)
+                    .addField ('s!tepkilist', `bütün tepkileri dm'den yollar`)
                 message.channel.send(embed)
             break;
             case 'sakaekle':
@@ -87,6 +90,48 @@ client.on('message', message =>{
                 if(message.author.id !== '286504647882178560') return message.reply("Yetkin yok.")
                 db.run(`INSERT INTO hakaretler (hakaret) VALUES ("${text}")`)
                 message.reply("Hakaret eklendi.")
+            break;
+            case 'hakaretlist':
+                let sql = `SELECT DISTINCT hakaret FROM hakaretler ORDER BY hakaret`;
+                let hakaretlist = ''
+                db.all(sql, [], (err, rows) => {
+                    if (err) {
+                        throw err;
+                    }
+                    rows.forEach((row) => {
+                        hakaretlist += row.hakaret + '\n'
+
+                    });
+                    message.author.send(hakaretlist)
+                });
+            break;
+            case 'sakalist':
+                let sql1 = `SELECT DISTINCT saka FROM sakalar ORDER BY saka`;
+                let sakalist = ''
+                db.all(sql1, [], (err, rows) => {
+                    if (err) {
+                        throw err;
+                    }
+                    rows.forEach((row) => {
+                        sakalist += row.saka + '\n'
+
+                    });
+                    message.author.send(sakalist)
+                });
+            break;
+            case 'tepkilist':
+                let sql2 = `SELECT DISTINCT tepki FROM tepkiler ORDER BY tepki`;
+                let tepkilist = ''
+                db.all(sql2, [], (err, rows) => {
+                    if (err) {
+                        throw err;
+                    }
+                    rows.forEach((row) => {
+                        tepkilist += row.tepki + '\n'
+
+                    });
+                    message.author.send(tepkilist)
+                });
             break;
         }
     }
