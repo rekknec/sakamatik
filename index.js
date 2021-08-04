@@ -34,6 +34,8 @@ client.on('message', message =>{
         message.react('🪣')
         message.react('🧻')
         message.react('🫂')
+    }else if(message.content.match('🤮')){
+        message.react('🪣')
     }
     if (whitelist.find(id => id == message.channel.id)){
         if(!message.content.startsWith(prefix) || message.author.bot) return
