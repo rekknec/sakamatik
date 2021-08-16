@@ -7,6 +7,7 @@ const prefix = 's!'
 
 
 
+
 let db = new sqlite3.Database('./sakabase.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
     if (err) {
         console.error(err.message);
@@ -38,7 +39,7 @@ client.on('message', message =>{
         message.react('🪣')
     }else if(message.content.match(/yat[iı][şs]/)){
         message.react('<:yatis:779723209322921995>')
-        console.log('girdi')
+
     }
     if (whitelist.find(id => id == message.channel.id)){
         if(!message.content.startsWith(prefix) || message.author.bot) return
